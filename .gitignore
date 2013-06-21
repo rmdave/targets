@@ -18,6 +18,10 @@ build/*
 *.xcworkspace
 xcuserdata
 
+#Exclude IntelliJ files
+.idea
+*.iml
+
 # Build files
 CordovaLib/CordovaLib.xcodeproj/xcuserdata/tim.xcuserdatad/xcschemes/CordovaLib.xcscheme
 CordovaLib/CordovaLib.xcodeproj/xcuserdata/tim.xcuserdatad/xcschemes/xcschememanagement.plist

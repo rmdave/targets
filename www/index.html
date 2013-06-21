@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-        <script src="https://raw.github.com/apigee/usergrid-javascript-sdk/0.9.10/usergrid.SDK.js"></script>
+        <script src="https://rawgithub.com/apigee/usergrid-javascript-sdk/0.9.10/usergrid.SDK.js"></script>
         <script type="text/javascript" src="cordova-2.2.0.js"></script>
     </head>
-    
+
     <body>
         <!-- This is the main page for the app -->
         <div data-role="page" id="results">
@@ -35,7 +35,7 @@
                 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
                     // Wait for the device to be ready to grab the geoloc
                     // Helps avoid the unsightly iOS authorization message
-                    // http://stackoverflow.com/questions/1673579/location-permission-alert-on-iphone-with-phonegap 
+                    // http://stackoverflow.com/questions/1673579/location-permission-alert-on-iphone-with-phonegap
                     document.addEventListener("deviceready", onDeviceReady, false);
                 } else {
                     onDeviceReady(); //this is the browser
@@ -43,17 +43,17 @@
             })
 
             function onDeviceReady() {
-                navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError);     
+                navigator.geolocation.getCurrentPosition(onGetLocationSuccess, onGetLocationError);
             }
 
             // This updates the map, listing and store page
             // for every result
             function renderStore(store, label) {
                 var coords = store.get('location').latitude+","+store.get('location').longitude;
-                
+
                 // Update the map
                 var src =  $("#map").attr('src') + "&markers=color:blue%7Clabel:"+label+"%7C"+coords;
-                
+
                 // Add a list divider for the Pharmacy and SuperTarget results
                 $("#map").attr('src', src);
                 switch(label) {
@@ -69,7 +69,7 @@
 
                 // Necessary for the listview to render correctly
                 $("#list").listview('refresh');
-                
+
                 $('body').append('<div data-role="page" id="page'+store.get('storeNumber')+'"><div data-theme="b" data-role="header" data-position="fixed"><h3>'+store.get('name')+'</h3><a data-role="button" data-rel="back" data-icon="arrow-l" data-iconpos="left"class="ui-btn-left">Results</a></div><img id="map" src="https://maps.googleapis.com/maps/api/staticmap?scale=2&center='+coords+'+&zoom=14&size='+window.innerWidth+'x200&markers='+coords+'&sensor=false" height="200"><div data-role="content"><div><p><b>Address</b><br/>'+store.get('location').displayAddress+'</p><p><b>Opening Hours</b><br/>'+store.get('hours').join('<br/>')+'</p></div></div></div>');
             }
 
@@ -90,7 +90,7 @@
 
                 // Do the actual query and process the results
                 stores.fetch( function(response) {
-                        
+
                         // Process the regular store
                         var count = 1;
                         while(stores.hasNextEntity()) {
